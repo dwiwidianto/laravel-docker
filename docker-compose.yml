@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  php:
+    image: <image:php>
+    env_file: base_env
+    environment:
+      CONTAINER_ROLE: php-fpm
+      APP_ENV: staging
+
+  queue:
+    image: <image:php>
+    env_file: base_env
+    environment:
+      CONTAINER_ROLE: queue
+      APP_ENV: staging
+
+  schedule:
+    image: <image:php>
+    env_file: base_env
+    environment:
+      CONTAINER_ROLE: scheduler
+      APP_ENV: staging
+
+  webserver:
+    image: <image:webserver>
+    ports:
+      - 8030:80
